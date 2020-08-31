@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\User;
 use App\usuarioperm\Models\Role;
+use App\usuarioperm\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,9 +44,27 @@ Route::get('/test', function () {
     'full-access'=>'no',
     ]);*/
 
-  $user = User::find(1);
-  $user->roles()->sync([1,2]);
-  return $user->roles;
+  //$user = User::find(1);
+  //$user->roles()->sync([1,2]);
+  //return $user->roles;
 
-   
+ /* return  Permission::create([
+    'name'=>'Create product',
+    'slug'=>'product.create',
+    'decription'=>'A user can create a permission',
+    'full-access'=>'no',
+    ]);*/
+
+    /*return  Permission::create([
+      'name'=>'List product',
+      'slug'=>'product.index',
+      'decription'=>'A user can list permissions',
+      'full-access'=>'no',
+      ]);*/
+
+  $role = Role::find(2);
+  $role->permissions()->sync([1]);
+  return $role->permissions;
+
+  
 });
